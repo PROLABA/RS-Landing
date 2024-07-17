@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/style/main.scss">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <section class="registration">
+    <div class="container">
+      <div class="registration__content">
+        <div class="registration__content-text">
+          <div class="flex-wrap">
+            <div class="logo-head">
+              <img src="/src/assets/img/logo.svg" alt="" srcset="">
+            </div>
+            <div class="registration__content-text-form">
+              <h1 class="registration__content-title h1">
+                Зарегистрируйтесь и начните работу в сервисах <span class="blue-text">бесплатно</span>
+              </h1>
+              <div class="item-form">
+                <input type="text" placeholder="Телефон*">
+                <div class="button-big blue-bg">
+                  Зарегистрироваться
+                </div>
+              </div>
+              <div class="registration__content-text-bottom">
+                <p>Если вы уже зарегистрированы</p>
+                <a href="" class="blue-text"> Войти</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-rce-cervises">
+          <div class="slider-body">
+            <div class="swiper" data-swiper-parallax="-23%">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">
+                  <div class="swiper-title-h1" data-swiper-parallax-duration="600"  data-swiper-parallax="-400">
+                    РСЭ Сервисы
+                  </div>
+                  <div class="swiper-desription" data-swiper-parallax-duration="600" data-swiper-parallax="-600">
+                    Сервисы для проектировщиков и участников строительного рынка.
+                  </div>
+                  <div class="swiper-bg-white" data-swiper-parallax-duration="600" data-swiper-parallax="-800">
+                    <div class="rf-icon">
+                      <img src="/src/assets/icon/rf.svg" alt="" srcset="">
+                    </div>
+                    <div class="rf-text">Рекомендованы Минстроем:<br> внесены в Перечень российского программного
+                      обеспечения для субъектов градостроительной деятельности.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="/src/script/slider-swiper.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+
+      },
+      parallax: true,
+      slidesPerView: 'auto',
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+$maxWidth: 1920;
+$s1280: 1280px;
+$s970: 970px;
+$s640: 640px;
+$s540: 540px;
+
+.container {
+    max-width: 1170px;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 480;
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 480px) / #{$maxWidth}));
+
+    @media(min-width: 1920px) {
+        font-size: $pcSize;
+    }
+}
