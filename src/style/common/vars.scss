@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .h1 {
     font-size: 35px;
     font-weight: 700;
@@ -16,4 +20,30 @@
 
 .blue-bg {
     background-color: #0578D6;
+}
+
+body {
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+
+}
+$grey-bg: rgba(233, 233, 233, 1);
+$blue-bg: rgba(153, 204, 255, 1);
+
+.is-blue-btn {
+    background-color: #0578D6;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 8px 20px 0px rgba(5, 120, 214, 0.5);
+
+    }
+
+    &:focus {
+        box-shadow: 0px 10px 15px 0px rgba(5, 120, 214, 0.4);
+        box-shadow: 0px 10px 20px 0px rgba(51, 51, 51, 0.3) inset;
+
+    }
 }

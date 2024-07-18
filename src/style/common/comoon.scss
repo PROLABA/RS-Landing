@@ -5,11 +5,18 @@ $s640: 640px;
 $s540: 540px;
 
 .container {
-    max-width: 1170px;
+    max-width: 1280px;
     width: 100%;
     padding: 0 10px;
     margin: 0 auto;
     box-sizing: border-box;
+}
+
+
+
+html {
+    scroll-behavior: smooth;
+
 }
 
 
@@ -21,4 +28,32 @@ $s540: 540px;
     @media(min-width: 1920px) {
         font-size: $pcSize;
     }
+}
+
+.section-title {
+    @include adaptiv-font(30, 20);
+    font-weight: 700;
+    line-height: 1.17;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #000;
+    position: relative !important;
+    width: 24px !important;
+    height: 24px !important;
+    padding: 20px !important;
+    border: 1px solid rgba(5, 120, 214, 1);
+    border-radius: 4px;
+    margin-top: 0px;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 24px !important;
+}
+
+.swiper-button-prev {
+    right: 0px !important;
+    left: 0px !important;
 }
