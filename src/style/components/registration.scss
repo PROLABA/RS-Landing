@@ -2,6 +2,10 @@
     position: sticky;
     top: 2px;
     display: flex;
+    padding-top: 16px;
+
+
+
 }
 
 .registration {
@@ -29,6 +33,25 @@
             gap: 22px;
 
         }
+
+        .logo-head {
+            display: flex;
+            justify-content: space-between;
+
+            .logo-icon {
+                display: none;
+
+                @media (max-width:1076px) {
+                    display: flex;
+                    gap: 8px;
+
+                    img {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+        }
     }
 
     .registration__content-text-form {
@@ -36,7 +59,9 @@
         flex-direction: column;
         width: 100%;
 
-        @media (max-width:1076px) {}
+
+
+
 
         input {
             padding: 18px;
@@ -469,6 +494,7 @@
                 text-align: center;
                 padding-bottom: 8px;
             }
+
         }
 
         .is-flex-wrap {
@@ -805,6 +831,11 @@
             }
 
             .get-started {
+                @media (max-width:500px) {
+                    text-align: center;
+                    width: 100%;
+                }
+
                 button {
                     padding: 18px 70.5px;
                     text-align: left;
@@ -820,6 +851,7 @@
                     @media (max-width:500px) {
                         text-align: center;
                         width: 100%;
+                        padding: 18px 62px;
                     }
                 }
             }
@@ -1042,6 +1074,11 @@
                     position: relative;
                     bottom: 46px;
                     right: 5px;
+
+                    @media (max-width: 500px) {
+                        right: 3px;
+
+                    }
                 }
 
                 .second-cov {
