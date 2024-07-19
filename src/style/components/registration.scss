@@ -138,7 +138,7 @@
                             padding: 50px 50px 20px 50px;
 
                             @media (max-width:1076px) {
-                                padding: 40px 16px !important;
+                                padding: 40px 16px 20px 16px !important;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
@@ -221,6 +221,7 @@
                                 @media (max-width:1076px) {
                                     grid-template-columns: 1fr;
                                     gap: 12px;
+                                    padding: 12px 0px;
                                 }
 
                                 li {
@@ -268,7 +269,14 @@
                                     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2) inset;
                                 }
 
+                                @media (max-width:500px) {
+                                    text-align: center;
+                                    width: 100%;
+                                }
+
                             }
+
+
 
                         }
 
@@ -727,6 +735,10 @@
                 text-align: left;
                 color: white;
 
+                @media (max-width:500px) {
+                    max-width: 196px;
+                }
+
             }
         }
 
@@ -781,6 +793,10 @@
                 align-items: center;
             }
 
+            @media (max-width:500px) {
+                align-items: start;
+            }
+
             .tarifs-text {
                 font-size: 18px;
                 font-weight: 400;
@@ -798,7 +814,13 @@
                     font-size: 16px;
                     font-weight: 700;
                     line-height: 1.17;
-                    @include adaptiv-font(16, 16)
+
+                    @include adaptiv-font(16, 16);
+
+                    @media (max-width:500px) {
+                        text-align: center;
+                        width: 100%;
+                    }
                 }
             }
         }
@@ -1066,7 +1088,7 @@
         border-radius: 50px 50px 0px 0px;
 
         @media (max-width:1050px) {
-            padding: 16px 43px;
+            padding: 16px 16px;
             border-radius: 20px 20px 0px 0px;
         }
 
@@ -1098,6 +1120,8 @@
 
                 .section-title {
                     color: white;
+
+
                 }
 
                 .footer-subtext {
@@ -1173,12 +1197,13 @@
                 grid-template-columns: 1fr;
             }
 
-            .udp {
-                @media (max-width:1050px) {
-                    padding-top: 12px;
-                }
-            }
 
+        }
+
+        .udp {
+            @media (max-width:1050px) {
+                padding-top: 12px;
+            }
         }
     }
 
