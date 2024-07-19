@@ -21,13 +21,16 @@
 .blue-bg {
     background-color: #0578D6;
 }
-
+html{ 
+    overflow-x: hidden;
+}
 body {
     height: 100%;
     position: relative;
-    overflow-x: hidden;
-
+    overflow-x: hidden !important;
+    font-variation-settings: "slnt" 0, "CRSV" 0, "SHRP" 0;
 }
+
 $grey-bg: rgba(233, 233, 233, 1);
 $blue-bg: rgba(153, 204, 255, 1);
 

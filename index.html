@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
   <link rel="stylesheet" href="src/style/main.scss">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
@@ -175,7 +177,7 @@
           </div>
         </div>
       </div>
-      <a href="#text-rigth" class="learn-more">
+      <a href="#" class="learn-more">
         Узнать подробнее
         <div class="more-icon">
           <div class="arrow-animate">
@@ -199,19 +201,20 @@
   </section>
   <section class="lernn-full" id="">
     <div class="container">
+
       <div class="lern-body">
-        <div class="text-left">Сервисы созданы экспертной компанией, </div>
-        <div class="text-rigth" id="text-rigth">которая <span class="border-blue">
+        <div class="text-left" data-aos="fade-left"> Сервисы созданы экспертной компанией, </div>
+        <div class="text-rigth" data-aos="fade-right" id="text-rigth">которая <span class="border-blue">
             10 лет</span> на рынке негосударственной экспертизы</div>
-        <div class="text-left">и имеет успешный опыт выдачи <span class="border-blue">
+        <div class="text-left is-flex-wrap" data-aos="fade-left">и имеет успешный опыт выдачи <span class="border-blue">
             5 000 экспертных заключений</span>
         </div>
-        <div class="text-rigth">для проектировщиков и участников строительного рынка.</div>
+        <div class="text-rigth" data-aos="fade-right">для проектировщиков и участников строительного рынка.</div>
       </div>
     </div>
   </section>
   <section class="list-section">
-    <div class="grey-bg">
+    <div class="grey-bg" data-aos="fade-up">
       <div class="container">
         <div class="grid-container-2fr">
           <div class="rigth-list">
@@ -234,7 +237,7 @@
         </div>
       </div>
     </div>
-    <div class="white-bg">
+    <div class="white-bg" data-aos="fade-up">
       <div class="container">
         <div class="grid-container-2fr">
           <div class="rigth-list">
@@ -250,14 +253,14 @@
         </div>
       </div>
     </div>
-    <div class="blue-bg">
+    <div class="blue-bg" data-aos="fade-up">
       <div class="container">
         <div class="grid-container-2fr">
           <div class="rigth-list">
             <div class="h1 title">Калькулятор расчета инсоляции</div>
             <div class="list-description">
               <div class="rf-icon">
-                <img src="/src/assets/icon/rf.svg" alt="" srcset="">
+                <img src="/src/assets/icon/rf-white.svg" alt="" srcset="">
               </div>
               <div class="icon-text">
                 Согласно СанПиН 1.2.3685-21 "Гигиенические нормативы и требования к обеспечению безопасности и (или)
@@ -272,7 +275,7 @@
         </div>
       </div>
     </div>
-    <div class="grey-bg">
+    <div class="grey-bg" data-aos="fade-up">
       <div class="container">
         <div class="grid-container-2fr">
           <div class="rigth-list">
@@ -293,7 +296,7 @@
         </div>
       </div>
     </div>
-    <div class="white-bg">
+    <div class="white-bg" data-aos="fade-up">
       <div class="container">
         <div class="grid-container-2fr">
           <div class="rigth-list">
@@ -315,14 +318,14 @@
         </div>
       </div>
     </div>
-    <div class="blue-bg">
+    <div class="blue-bg" data-aos="fade-up">
       <div class="container">
         <div class="grid-container-2fr">
           <div class="rigth-list">
             <div class="h1 title">Конструктор письма</div>
             <div class="list-description">
               <div class="rf-icon">
-                <img src="/src/assets/icon/rf.svg" alt="" srcset="">
+                <img src="/src/assets/icon/rf-white.svg" alt="" srcset="">
               </div>
               <div class="icon-text">
                 Подтверждение соответствия изменений, внесенных в проектную документацию, получившую положительное
@@ -339,7 +342,7 @@
         </div>
       </div>
     </div>
-    <div class="grey-bg">
+    <div class="grey-bg" data-aos="fade-up">
       <div class="container">
         <div class="grid-container-2fr">
           <div class="rigth-list">
@@ -360,17 +363,17 @@
         </div>
       </div>
     </div>
-    <div class="flex-center">
+    <div class="flex-center" data-aos="fade-up">
       <button class="try-this is-blue-btn">Попробуйте Сервисы бесплатно!</button>
     </div>
   </section>
   <section class="conveniences">
     <div class="container">
-      <div class="section-title">
+      <div class="section-title" data-aos="fade-up" data-aos-delay="0">
         Почему Сервисы – это удобно?
       </div>
       <div class="conveniences-grid-container">
-        <div class="conveniences-column">
+        <div class="conveniences-column" data-aos="fade-left" data-aos-delay="400">
           <div class="conveniences-item">
             <div class="cheked-icon">
               <img src="/src/assets/icon/cheked.svg" alt="">
@@ -390,8 +393,9 @@
             <div class="cheked-text">Можно скачивать бесконечное количество раз.</div>
           </div>
         </div>
-        <div class="conveniences-column-img"><img src="/src/assets/img/mackboock.png" alt="" srcset=""></div>
-        <div class="conveniences-column">
+        <div class="conveniences-column-img" data-aos="fade-up" data-aos-delay="800"><img
+            src="/src/assets/img/mackboock.png" alt="" srcset=""></div>
+        <div class="conveniences-column" data-aos="fade-right" data-aos-delay="1200">
           <div class="conveniences-item">
             <div class="cheked-icon">
               <img src="/src/assets/icon/cheked.svg" alt="">
@@ -416,7 +420,7 @@
       </div>
     </div>
   </section>
-  <section class="gift">
+  <section class="gift" data-aos="fade-up">
     <div class="container">
       <div class="gift-container">
         <div class="gift-icon">
@@ -431,17 +435,18 @@
     <div class="container">
       <div class="tarifs-container">
         <div class="left-content">
-          <div class="section-title">
+          <div class="section-title" data-aos="fade-left" data-aos-delay="0">
             Тарифы для вашего удобства
           </div>
-          <div class="tarifs-text">Предоставляем индивидуальные скидки<br> компаниям по запросу</div>
+          <div class="tarifs-text" data-aos="fade-left" data-aos-delay="200">Предоставляем индивидуальные скидки<br>
+            компаниям по запросу</div>
           <div class="get-started ">
-            <button class="is-blue-btn">Начать пользоваться</button>
+            <button class="is-blue-btn" data-aos="flip-left" data-aos-delay="400">Начать пользоваться</button>
           </div>
         </div>
         <div class="right-content">
           <div class="tarifs-list">
-            <div class="first-row">
+            <div class="first-row" data-aos="flip-left" data-aos-delay="500">
               <div class="head-row">
                 <div class="time">На 12 месяцев</div>
                 <div class="tarifs-offer">Корпоративный</div>
@@ -451,7 +456,7 @@
               </div>
             </div>
             <div class="bottom-column">
-              <div class="second-row">
+              <div class="second-row" data-aos="flip-left" data-aos-delay="600">
                 <div class="head-row">
                   <div class="time">На 6 месяцев</div>
                   <div class="tarifs-offer">Выгодный</div>
@@ -460,7 +465,7 @@
                   4 990 ₽
                 </div>
               </div>
-              <div class="thrid-row">
+              <div class="thrid-row" data-aos="flip-left" data-aos-delay="700">
                 <div class="head-row">
                   <div class="time">На 1 месяц</div>
                   <div class="tarifs-offer"> Пробный </div>
@@ -478,7 +483,7 @@
   <section class="feedback">
     <div class="container">
       <div class="feedback-head">
-        <div class="feedback-flex">
+        <div class="feedback-flex" data-aos="fade-right">
           <div class="feedback-title">Уже более <span class="blue-text">2500 человек</span><br> пользуются Сервисами
           </div>
           <div class="feedback-icon-pepole">
@@ -487,12 +492,12 @@
             <img src="src/assets/img/man2.png" alt="">
           </div>
         </div>
-        <div class="slider-btn">
+        <div class="slider-btn" data-aos="fade-left" data-aos-delay="600">
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
       </div>
-      <div class="feedback-slider">
+      <div class="feedback-slider" data-aos="fade-left" data-aos-delay="400">
         <div class="swiper-feedbeek">
           <div class="swiper-wrapper">
             <!-- Slides -->
@@ -642,6 +647,8 @@
   </section>
   <script src="/src/script/slider-swiper.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script>
     const swiper = new Swiper('.swiper', {
       pagination: {
@@ -661,8 +668,33 @@
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
+      breakpoints: {
+        0: {
+          slidesPerView: 1.5,
+          spaceBetween: 8
+        },
+        600: {
+          slidesPerView: 2,
+          spaceBetween: 8,
+        },
+        1076: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        }
+      },
       slidesPerView: '3',
       spaceBetween: 20,
+    });
+    AOS.init();
+
+    let learnMore = document.querySelector(".learn-more");
+
+    learnMore.addEventListener("click", () => {
+      window.scrollBy({
+        top: 210,
+        left: 0,
+        behavior: 'smooth'
+      });
     });
   </script>
 </body>
