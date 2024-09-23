@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="src/style/main.scss">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js"
+        type="text/javascript"></script>
+
+</head>
+
+<body>
+    <section class="registration">
+        <div class="container">
+            <div class="registration__content">
+                <div class="registration__content-text">
+                    <div class="flex-wrap">
+                        <div class="logo-head">
+                            <img src="/src/assets/img/logo.svg" alt="" srcset="">
+                            <div class="logo-icon">
+                                <img src="/src/assets/icon/tg.svg" alt="" class="tg">
+                                <img src="/src/assets/icon/whatsap.svg" alt="" class="wh">
+                            </div>
+                        </div>
+                        <div class="registration__content-text-form">
+                            <h1 class="registration__content-title h1">
+                                Зарегистрируйтесь и начните работу в сервисах <span class="blue-text">бесплатно</span>
+                            </h1>
+                            <div id="phone-input-section" class="item-form">
+                                <input type="text" id="phone" placeholder="Телефон*">
+                                <div id="get-code-btn" class="button-big disabled-btn blue-bg">
+                                    Получить код
+                                </div>
+                            </div>
+                            <div id="code-input-section" class="item-form" style="display: none;">
+                                <div class="atention-text">
+                                    <span class="gray-text">Отправили код на <span id="entered-phone"
+                                            class="number"></span></span>
+                                    <span class="gray-text">Введите код, чтобы подтвердить Вашу личность</span>
+                                </div>
+                                <input type="text" id="sms-code" class="pb20" placeholder="Код из смс">
+                                <div id="confirm-btn" class="button-big disabled-btn blue-bg">
+                                    Подтвердить
+                                </div>
+                                <div id="code-resend-message" class="gray-text" style="padding-top: 15px;">Повторно код
+                                    можно получить через
+                                    <span id="timer">01:00</span>
+                                </div>
+                                <a href="#" id="resend-code" class="blue-text" style="display: none;">Получить код еще
+                                    раз</a>
+                            </div>
+                        </div>
+                        <div class="form-section-registration">
+                            <div class="flex-input">
+                                <div class="registration__content-text-form">
+                                    <div class="phone-input-section">
+                                        <div class="flex-container">
+                                            <input type="text" id="phone" placeholder="Телефон*">
+                                            <input type="text" id="phone" placeholder="Email*">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-section">
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <script src="/src/script/main.js"></script>
+
+</body>
+
+</html>
