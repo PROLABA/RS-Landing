@@ -1,10 +1,7 @@
 $(document).ready(function () {
     let phoneNumber = '';
     let timerInterval;
-    let existingPhoneNumbers = [
-        "+7-996-335-92-00",
-        "+7-999-999-99-99",
-    ];
+    let existingТumber = "+7-996-335-92-00"
 
 
     $("#phone").mask("+7-999-999-99-99");
@@ -13,7 +10,8 @@ $(document).ready(function () {
         phoneNumber = $("#phone").val();
         if (phoneNumber.length === 16 && phoneNumber.match(/^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/)) {
             $("#get-code-btn").removeClass("disabled-btn");
-        } else {
+        }
+        else {
             $("#get-code-btn").addClass("disabled-btn");
         }
     }
@@ -27,7 +25,12 @@ $(document).ready(function () {
         }
     }
 
-    // Handle "Get Code" button click
+    function showRegistrationForm() {
+        $("#code-input-section").hide();
+        $(".form-section-registration").show();
+        $(".form-section-registration #phone").val(phoneNumber).addClass('filled-input');
+    }
+
     $("#get-code-btn").click(function () {
         if (!$(this).hasClass("disabled-btn")) {
             phoneNumber = $("#phone").val();
@@ -38,33 +41,28 @@ $(document).ready(function () {
         }
     });
 
-    // Handle "Confirm" button click
     $("#confirm-btn").click(function () {
         if (!$(this).hasClass("disabled-btn")) {
             let code = $("#sms-code").val();
-            // Here you would typically send this code to your server for verification
-            alert("Код подтвержден Регистрация завершена.");
+            showRegistrationForm();
         }
     });
 
-    // Handle "Resend Code" link click
     $("#resend-code").click(function (e) {
         e.preventDefault();
-        $("#resend-code").hide(); // Hide the resend button
-        $("#code-resend-message").show(); // Show the timer message
-        startTimer(); // Restart the timer
+        $("#resend-code").hide();
+        $("#code-resend-message").show();
+        startTimer();
     });
 
-    // Check the phone number input field on keyup
     $("#phone").on("keyup", checkGetCodeButton);
 
-    // Check the SMS code input field on keyup
     $("#sms-code").on("keyup", checkConfirmButton);
 
     function startTimer() {
         let timeLeft = 60;
         $("#timer").text("01:00");
-        $("#code-resend-message").show(); // Ensure the message is visible
+        $("#code-resend-message").show();
 
         clearInterval(timerInterval);
         timerInterval = setInterval(function () {
@@ -78,9 +76,54 @@ $(document).ready(function () {
 
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
-                $("#code-resend-message").hide(); // Hide the message and timer
-                $("#resend-code").show(); // Show the resend button
+                $("#code-resend-message").hide();
+                $("#resend-code").show();
             }
         }, 1000);
     }
+    $('.password-toggle').click(function () {
+        const targetId = $(this).data('target');
+        const passwordInput = $('#' + targetId);
+        const eyeClosedIcon = $(this).find('.eye-closed');
+        const eyeOpenIcon = $(this).find('.eye-open');
+
+        if (passwordInput.attr('type') === 'password') {
+            passwordInput.attr('type', 'text');
+            eyeClosedIcon.hide();
+            eyeOpenIcon.show();
+        } else {
+            passwordInput.attr('type', 'password');
+            eyeClosedIcon.show();
+            eyeOpenIcon.hide();
+        }
+    });
+
+    $('.back').click(function () {
+        $('#code-input-section').hide();
+        $('#phone-input-section').show();
+    });
+
+    function checkAllFields() {
+        const email = $('#email').val().trim();
+        const name = $('#name').val().trim();
+        const password = $('#password').val();
+        const repeatPassword = $('#repeat-password').val();
+        const checked = $('#checked').is(":checked");
+
+        // Password validation
+        // const isEnglishOnly = /^[A-Za-z0-9]*$/.test(password);
+        // const isLongEnough = password.length >= 8;
+        // const passwordsMatch = password === repeatPassword;
+
+        if (email && name && password && repeatPassword && checked) {
+            $('.button-big').removeClass('disabled-btn');
+        } else {
+            $('.button-big').addClass('disabled-btn');
+        }
+    }
+
+    $('#email, #name, #password, #repeat-password').on('input', checkAllFields);
+    $('#checked').on('change', checkAllFields);
+
+
 });
