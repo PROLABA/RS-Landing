@@ -1,28 +1,54 @@
+let apiUrl = "https://devserv.rsexpertiza.ru/";
+
 $(document).ready(function () {
   let phoneNumber = "";
+  let code = "";
   let timerInterval;
-  let existingТumber = "+7-996-335-92-00";
-
   $("#phone").mask("+7-999-999-99-99");
 
   function checkGetCodeButton() {
-    phoneNumber = $("#phone").val();
+    let maskedPhone = $("#phone").val() || "";
+    phoneNumber = maskedPhone.replace(/[-+]/g, "");
+
     if (
-      phoneNumber.length === 16 &&
-      phoneNumber.match(/^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/)
+      maskedPhone != "" &&
+      maskedPhone.length === 16 &&
+      maskedPhone.match(/^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/)
     ) {
-      $("#get-code-btn").removeClass("disabled-btn");
-    } else {
-      $("#get-code-btn").addClass("disabled-btn");
+      fetch(`${apiUrl}api/auth/verify?phone=${phoneNumber}`, {
+        method: "POST",
+      })
+        .then((response) => {
+          if (response.ok) {
+            $("#get-code-btn").removeClass("disabled-btn");
+          } else {
+            console.log("Error:", response.status);
+            $("#get-code-btn").addClass("disabled-btn");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     }
   }
 
   function checkConfirmButton() {
-    let code = $("#sms-code").val();
-    if (code.length === 4) {
-      $("#confirm-btn").removeClass("disabled-btn");
-    } else {
-      $("#confirm-btn").addClass("disabled-btn");
+    code = $("#sms-code").val();
+    if (code.length === 4 && code.length != 0) {
+      fetch(`${apiUrl}api/auth/sms-confirm?code=${code}`, {
+        method: "POST",
+      })
+        .then((response) => {
+          if (response.ok) {
+            $("#confirm-btn").removeClass("disabled-btn");
+          } else {
+            console.log("Error:", response.status);
+            $("#confirm-btn").addClass("disabled-btn");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     }
   }
 
@@ -110,25 +136,53 @@ $(document).ready(function () {
   });
 
   function checkAllFields() {
-    const email = $("#email").val().trim();
-    const name = $("#name").val().trim();
-    const password = $("#password").val();
-    const repeatPassword = $("#repeat-password").val();
-    const checked = $("#checked").is(":checked");
-
-    // Password validation
-    // const isEnglishOnly = /^[A-Za-z0-9]*$/.test(password);
-    // const isLongEnough = password.length >= 8;
-    // const passwordsMatch = password === repeatPassword;
-
-    if (email && name && password && repeatPassword && checked) {
+    const email = $("#registration #email").val().trim();
+    const name = $("#registration #name").val().trim();
+    const password = $("#registration #password").val();
+    const repeatPassword = $("#registration #repeat-password").val();
+    const checked = $("#registration #checked").is(":checked");
+    if (
+      email &&
+      name &&
+      password &&
+      repeatPassword &&
+      checked &&
+      password === repeatPassword
+    ) {
       $(".button-big").removeClass("disabled-btn");
+      $("#registration").click(() => {
+        fetch(`${apiUrl}api/auth/reg`, {
+          method: "POST",
+          body: JSON.stringify({
+            login: email,
+            name: name,
+            password: password,
+            confirm_password: repeatPassword,
+            code: code,
+            email: email,
+            phone: phoneNumber.replace(/[-+]/g, ""),
+          }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              let link = document.location.href;
+              window.location.href = `/account/`;
+            } else {
+              console.log("Error:", response.status);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
     } else {
       $(".button-big").addClass("disabled-btn");
     }
   }
 
-  $("#email, #name, #password, #repeat-password").on("input", checkAllFields);
+  $(
+    " #registration #email,  #registration #name, #registration #password, #registration #repeat-password"
+  ).on("input", checkAllFields);
   $("#checked").on("change", checkAllFields);
 });
 
@@ -136,15 +190,34 @@ $(document).ready(function () {
   $(".form-section-remove, .removed-pass-messages, .removed-pass").hide();
   $(".form-section-auth").show();
 
-  // Authentication logic
   function checkAuthFields() {
     const email = $("#email").val().trim();
     const password = $("#password-auth").val();
-
-    if (email && password) {
+    if (email && password && password.length >= 8) {
       $(".form-section-auth .button-big")
         .removeClass("disabled-btn")
         .prop("disabled", false);
+      $("#autorize").on("click", function (event) {
+        event.preventDefault();
+        fetch(`${apiUrl}api/auth`, {
+          method: "POST",
+          body: JSON.stringify({
+            login: email,
+            password: password,
+          }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              // let link = document.location.href;
+              window.location.href = `/account/`;
+            } else {
+              console.log("Error:", response.status);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
     } else {
       $(".form-section-auth .button-big")
         .addClass("disabled-btn")
@@ -161,52 +234,51 @@ $(document).ready(function () {
     $(".form-section-remove").show();
   });
 
-  function checkRecoveryEmail() {
-    const email = $(".form-section-remove #email2").val().trim();
-    const button = $(".form-section-remove .button-big");
+  // function checkRecoveryEmail() {
+  //   const email = $(".form-section-remove #email2").val().trim();
+  //   const button = $(".form-section-remove .button-big");
 
-    if (email) {
-      button.removeClass("disabled-btn").prop("disabled", false);
-    } else {
-      button.addClass("disabled-btn").prop("disabled", true);
-    }
-  }
+  //   if (email) {
+  //     button.removeClass("disabled-btn").prop("disabled", false);
+  //   } else {
+  //     button.addClass("disabled-btn").prop("disabled", true);
+  //   }
+  // }
 
-  $(".form-section-remove #email2").on("input", checkRecoveryEmail);
+  // $(".form-section-remove #email2").on("input", checkRecoveryEmail);
 
-  checkRecoveryEmail();
+  // checkRecoveryEmail();
 
-  $(".form-section-remove .button-big").click(function (e) {
-    e.preventDefault();
-    if (!$(this).hasClass("disabled-btn")) {
-      $(".form-section-remove").hide();
-      $(".removed-pass").show();
-    }
-  });
+  // $(".form-section-remove .button-big").click(function (e) {
+  //   e.preventDefault();
+  //   if (!$(this).hasClass("disabled-btn")) {
+  //     $(".form-section-remove").hide();
+  //     $(".removed-pass").show();
+  //   }
+  // });
 
-  function checkNewPasswords() {
-        const password = $(".removed-pass #password-removed").val();
-        const repeatPassword = $(".removed-pass #repeat-password-removed").val();
-        const button = $(".removed-pass .button-big");
+  // function checkNewPasswords() {
+  //   const password = $(".removed-pass #password-removed").val();
+  //   const repeatPassword = $(".removed-pass #repeat-password-removed").val();
+  //   const button = $(".removed-pass .button-big");
 
-        if (password && repeatPassword) {
-            button.removeClass("disabled-btn").prop("disabled", false);
-        } else {
-            button.addClass("disabled-btn").prop("disabled", true);
-        }
-    }
+  //   if (password && repeatPassword) {
+  //     button.removeClass("disabled-btn").prop("disabled", false);
+  //   } else {
+  //     button.addClass("disabled-btn").prop("disabled", true);
+  //   }
+  // }
 
-    $(".removed-pass #password-removed, .removed-pass #repeat-password-removed").on(
-        "input",
-        checkNewPasswords
-    );
+  // $(
+  //   ".removed-pass #password-removed, .removed-pass #repeat-password-removed"
+  // ).on("input", checkNewPasswords);
 
-    // Initial check
-    checkNewPasswords();
+  // // Initial check
+  // checkNewPasswords();
 
-  // Back button functionality
-  $(".back").click(function () {
-    $(".form-section-remove, .removed-pass").hide();
-    $(".form-section-auth").show();
-  });
+  // // Back button functionality
+  // $(".back").click(function () {
+  //   $(".form-section-remove, .removed-pass").hide();
+  //   $(".form-section-auth").show();
+  // });
 });
